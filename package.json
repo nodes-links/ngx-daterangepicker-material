@@ -1,6 +1,6 @@
 {
-  "name": "ngx-daterangepicker-material",
-  "version": "6.0.4",
+  "name": "@nodeslinks/ngx-daterangepicker-material",
+  "version": "15.0.10",
   "description": "Angular 9 and 10 date range picker (with material design theme)",
   "keywords": [
     "angular2",
@@ -36,8 +36,10 @@
     "lint": "ng lint",
     "ngc": "./node_modules/.bin/ngc -p tsconfig.json",
     "gh-pages": "ng build --configuration production --base-href=\"/ngx-daterangepicker-material/\" && ngh --dir demo/dist",
-    "build": "ng-packagr -p ng-package.json -c tsconfig.json",
+    "build": "ng-packagr -p ng-package.json -c tsconfig.json && npm run build-themes && npm run bundle-styles",
     "build:schematics": "tsc -p ./tsconfig.schematics.json",
+    "build-themes": "bash ./tools/build-themes.sh",
+    "bundle-styles": "scss-bundle -c scss-bundle.config.json",
     "copy:schematics": "cpr schematics/dist dist/schematics && cp ./schematics/collection.json ./dist/schematics && cp ./schematics/ng-add/schema.json ./dist/schematics/ng-add",
     "postbuild": "npm run build:schematics && npm run copy:schematics"
   },
@@ -101,7 +103,9 @@
     "rxjs": "^6.3.3",
     "ts-node": "~8.3.0",
     "typescript": "4.9.5",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "node-sass": "8.0.0",
+    "scss-bundle": "^3.1.1"
   },
   "dependencies": {
     "dayjs": "^1.11.5"
